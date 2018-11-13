@@ -45,7 +45,7 @@
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6">
                 <label class="control-label">Contact name*</label>
-                <input type="text" formControlName="contactname" class="form-control" value="Charles Brenton">
+                <input type="text" formControlName="contactname" class="form-control">
                 <div *ngIf="f.contactname.errors">
 
                   <small *ngIf="f.contactname.errors.required && (f.contactname.dirty || f.contactname.touched)" class="alert-danger">

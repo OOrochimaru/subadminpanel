@@ -7,7 +7,7 @@ import { AddjobComponent } from './jobsdetail/addjob/addjob.component';
 
 const route : Routes = [
     {path: '', component: DashboardComponent, pathMatch: 'full'},
-    {path: 'jobsdetail', component: JobsdetailComponent},
+    // {path: 'jobsdetail', component: JobsdetailComponent},
     {path: 'addjob', component: AddjobComponent},
 ]
 @NgModule({

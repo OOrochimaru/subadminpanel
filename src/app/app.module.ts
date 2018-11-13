@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 // import { ToasterService } from './core/services/toaster.service';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
-import { JobsdetailComponent } from './jobsdetail/jobsdetail.component';
+// import { JobsdetailComponent } from './jobsdetail/jobsdetail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {PaginatorModule} from 'primeng/paginator';
 import { AddjobComponent } from './jobsdetail/addjob/addjob.component';
@@ -31,7 +31,7 @@ import { AddjobComponent } from './jobsdetail/addjob/addjob.component';
     HeaderComponent,
     SidebarComponent,
     DashboardComponent,
-    JobsdetailComponent,
+    // JobsdetailComponent,
     AddjobComponent,
   ],
   imports: [
