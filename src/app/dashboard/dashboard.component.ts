@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUsers('userlist').subscribe(data=>{
+      console.log(data);
       data = data.data
       for(var key in data){
         this.user.push(data[key]);

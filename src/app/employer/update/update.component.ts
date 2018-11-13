@@ -16,6 +16,8 @@ export class UpdateComponent implements OnInit {
     private userService: UserService, 
   private router: Router) { }
   user: User;
+  createdAt: any;
+  updatedAt: any;
   myForm: FormGroup;
   ngOnInit() {
     this.createForm();
@@ -51,7 +53,9 @@ export class UpdateComponent implements OnInit {
           address : this.user.address ? this.user.address : '',
           password : this.user.password ? this.user.password : '',
           description : this.user.description ? this.user.description : '',
-        })
+        });
+        this.createdAt = this.user.createdAt; 
+        this.updatedAt = this.user.updatedAt; 
       }else{
         this.router.navigate(['/'])
       }
