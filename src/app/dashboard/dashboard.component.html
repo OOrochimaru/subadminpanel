@@ -1,0 +1,166 @@
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+  <div class="row">
+    <ol class="breadcrumb">
+      <li>
+        <a href="#">
+          <em class="fa fa-home"></em>
+        </a>
+      </li>
+      <li class="active">Dashboard</li>
+    </ol>
+  </div>
+  <!--/.row-->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Dashboard</h1>
+    </div>
+  </div>
+  <!--/.row-->
+  <div class="panel panel-container">
+    <div class="row">
+      <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+        <div class="panel panel-teal panel-widget border-right">
+          <div class="row no-padding">
+            <em class="fa fa-xl fa-shopping-cart color-blue"></em>
+            <div class="large">120</div>
+            <div class="text-muted">Jobs</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+        <div class="panel panel-blue panel-widget border-right">
+          <div class="row no-padding">
+            <em class="fa fa-xl fa-comments color-orange"></em>
+            <div class="large">{{user.length}}</div>
+            <div class="text-muted">Employer</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+        <div class="panel panel-orange panel-widget border-right">
+          <div class="row no-padding">
+            <em class="fa fa-xl fa-users color-teal"></em>
+            <div class="large">24</div>
+            <div class="text-muted">Job Seeker</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+        <div class="panel panel-red panel-widget ">
+          <div class="row no-padding">
+            <em class="fa fa-xl fa-search color-red"></em>
+            <div class="large">25.2k</div>
+            <div class="text-muted">Page visits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.row-->
+  </div>
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            User Lists
+        </div>
+        <div class="panel-body">
+          <p-table [paginator]="true" [rows]="5" [totalRecords]="user.length" [columns]="cols" [value]='user'>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                  {{col.header}}
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+              </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+              <tr>
+                <td>{{user.contact_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user._id}}</td>
+                <td>
+                  <div class="ui-g">
+                      <div class="ui-g-3"><p-button pTooltip="edit" (click)="editUser(user._id)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-pencil" styleClass="ui-button-success"  ></p-button></div>
+                      <div class="ui-g-3"><p-button pTooltip="view"  (click)="showDialog(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-eye" styleClass="ui-button-info" ></p-button></div>
+                      <div class="ui-g-3"><p-button pTooltip="deactivate" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-times-circle" styleClass="ui-button-warning"></p-button></div>
+                      <div class="ui-g-3"><p-button pTooltip="delete" (click)="deleteUser(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-minus" styleClass="ui-button-danger"></p-button></div>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+  <p-dialog header="User Details" [(visible)]="display" [width]="500" [modal]="true">
+
+      <div class="form-group row">
+          <label for="staticEmail" class="col-sm-4 col-form-label">Contact Name</label>
+          <div class="col-sm-6">{{selectedUser?.contact_name}}</div>
+      </div>
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-4 col-form-label">Company Name</label>
+              <div class="col-sm-6">{{selectedUser?.company_name}} </div>
+          </div>
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-6">{{selectedUser?.email}}  </div>
+      </div>
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+          <div class="col-sm-6">{{selectedUser?.password}}  </div>
+      </div>
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-4 col-form-label">Address</label>
+          <div class="col-sm-6">{{selectedUser?.address}}  </div>
+      </div> 
+      <div class="form-group row">
+          <label for="inputPassword" class="col-sm-4 col-form-label">Last updatedAt</label>
+          <div class="col-sm-6">{{selectedUser?.updatedAt}}  </div>
+      </div>     
+  </p-dialog>
+  
+  <div class="col-lg-12">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              Recent Job Lists
+          </div>
+          <div class="panel-body">
+            <p-table [paginator]="true" [rows]="1" [value]='user'>
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>First Name</th>
+                  <th>Email</th>
+                  <th>User Type</th>
+                  <th>Action</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-user>
+                <tr>
+                  <td>{{user.first_name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.usertype}}</td>
+                  <td>
+                    <div class="ui-g">
+                        <div class="ui-g-3"><p-button pTooltip="edit" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-pencil" styleClass="ui-button-success"></p-button></div>
+                        <div class="ui-g-3"><p-button pTooltip="view" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-eye" styleClass="ui-button-info"></p-button></div>
+                        <div class="ui-g-3"><p-button pTooltip="deactivate" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-times-circle" styleClass="ui-button-warning"></p-button></div>
+                        <div class="ui-g-3"><p-button pTooltip="delete" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-minus" styleClass="ui-button-danger"></p-button></div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+
+
+</div>

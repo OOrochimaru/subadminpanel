@@ -1,0 +1,118 @@
+<div class="col-sm-10 col-sm-offset-2">
+  <div class="row">
+    <div class="col-lg-9 col-md-8 col-sm-6">
+      <h2>Add Employer</h2>
+      <ol class="breadcrumb">
+        <li>
+          <strong>Add Employer</strong>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+
+  <p class="m-b-none">
+    <i class="fa fa-info-circle"></i>Use the form below to Add employer to the system.</p>
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="tabs-container tabs-reservations m-b-lg">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a  routerLink="/employers/addEmployer" aria-controls="contact-details" role="tab" data-toggle="tab" aria-expanded="true">Contact details</a>
+        </li>
+        <li role="presentation" class="">
+          <a  routerLink="/employers/billingDetails" aria-controls="billing-details" role="tab" data-toggle="tab" aria-expanded="false">Billing details</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="billing-details">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Contact name</label>
+
+              <input type="text" name="b_contact_name" id="b_contact_name" value="" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Phone</label>
+
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-phone"></i>
+                </span>
+
+                <input type="text" name="b_phone" id="b_phone" value="" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Email</label>
+
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="fa fa-at"></i>
+                </span>
+
+                <input type="text" name="b_email" id="b_email" value="" class="form-control email" data-msg-email="Please enter a valid email.">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Address</label>
+
+              <input type="text" name="b_address" id="b_address" value="" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">City</label>
+
+              <input type="text" name="b_city" id="b_city" value="" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">State</label>
+
+              <input type="text" name="b_state" id="b_state" value="" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">Country</label>
+
+              <input type="text" name="b_country" id="b_country" value="" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="form-group">
+              <label class="control-label">VAT number</label>
+
+              <input type="text" name="b_vat" id="b_vat" value="" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="hr-line-dashed"></div>
+
+        <div class="clearfix">
+          <button type="submit" class="btn btn-primary btn-lg pull-left">Save</button>
+          <!-- <button class="btn btn-white btn-lg pull-right" type="button" onclick="window.location.href=&#39;http://vevs.website/ryambudha/index.php?controller=pjJobPortalEmployers&amp;action=pjActionIndex&#39;;">Cancel</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

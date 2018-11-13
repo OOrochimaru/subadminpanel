@@ -1,0 +1,64 @@
+<div class="page-header col-md-offset-2" style="background: url(assets/img/banner1.jpg); min-height: 250px ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-11" >
+        <div class="breadcrumb-wrapper">
+                <h2 class="product-title">Post A Job</h2>
+        <ol class="breadcrumb" style="background-color: transparent">
+                  <li><a routerLink="/index"><i class="ti-home"></i> Home</a></li>
+                  <li class="current"> <a routerLink="#">Post A Job</a></li>
+                </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <h4>Post a Job</h4>
+    <div class="col col-md-2"></div>
+    <div class="col col-md-8">
+      <form [formGroup]="myForm" novalidate (ngSubmit)="postAJob()">
+        <div class="form-group required">
+          <label for="exampleInputEmail1" class='control-label'>Job Title</label>
+          <input type="email" class="form-control" formControlName="jobTitle" aria-describedby="emailHelp" placeholder="Ex: Senior Mobile Developer">
+          <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+        </div>
+        <div class="form-group required">
+          <label for="exampleInputPassword1" class='control-label'>Location</label>
+          <input type="text" class="form-control" formControlName="jobLocation" placeholder="Ex:Hyderabad">
+        </div>
+        <div class="form-group required">
+          <label for="exampleSelect1" class='control-label'>Job Type</label>
+          <select class="form-control" formControlName="jobType">
+            <option default="true">Full Time</option>
+            <option>Part Time</option>
+            <option>Contract</option>
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label for="exampleTextarea" class='control-label'>Job Description</label>
+          <textarea class="form-control" formControlName="jobDescription" rows="7"></textarea>
+        </div>
+        <div class="form-group required">
+          <label for="exampleInputPassword1" class='control-label'>Company Name</label>
+          <input type="text" class="form-control" formControlName="companyName" value="{{companyName}}" placeholder="Ex:Infosys">
+        </div>
+        <div class="form-group required">
+          <label for="exampleInputPassword1" class='control-label'>Experience</label>
+          <input type="text" class="form-control" formControlName="experience" placeholder="Your Experience">
+        </div>
+        <div class="form-group required">
+          <label for="exampleTextarea" class='control-label'>How to Apply</label>
+          <textarea class="form-control" rows="3" formControlName="applicationMethod" placeholder="For Example: Email your resume to jobs@xyz.com"></textarea>
+        </div>
+        <ul class="media-date text-uppercase reviews list-inline">
+          <!-- <li class="mm"><button type="submit" class="btn btn-primary">Preview</button></li> -->
+          <li class="aaaa"><button type="submit" class="btn btn-success">Publish</button></li>
+        </ul>
+      </form>
+    </div>
+    <div class="col col-md-2"></div>
+  </div>
+</div>
