@@ -8,6 +8,6 @@ export class User{
     description : String;
     password : String;
     createdAt: String;
-    updatedAt: String;
+    lastUpdated: String;
     _id: String;
 }

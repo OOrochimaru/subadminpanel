@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
     this.myForm = this.fb.group({
       companyname: ['', [Validators.required, noWhitespaceValidator]],
       // fullname: ['', Validators.required],
-      contactname: ['', Validators.required, noWhitespaceValidator],
+      contactname: ['', [Validators.required, noWhitespaceValidator]],
       phone: ['', [Validators.required, Validators.pattern(this.phoneRegex), noWhitespaceValidator]],
       email: ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
       url: ['', Validators.required, noWhitespaceValidator],

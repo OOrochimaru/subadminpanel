@@ -61,160 +61,197 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Company name</label>
-
-                <input formControlName="companyname" type="text" name="company_name" id="company_name" class="form-control required" value="Accounting Solutions" data-msg-required="This field is required."
-                  aria-required="true">
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Contact name</label>
-
-                <input formControlName="contactname" type="text" id="contact_name" class="form-control" value="Charles Brenton" data-msg-required="This field is required.">
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Phone</label>
-
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="fa fa-phone"></i>
-                  </span>
-
-                  <input formControlName="phone" type="text" id="phone" value="01246 205675" class="form-control">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Email</label>
-
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="fa fa-at"></i>
-                  </span>
-
-                  <input type="text" formControlName="email" id="email" class="form-control required email" value="info@accountf.com" data-msg-required="This field is required."
-                    data-msg-email="Please enter a valid email." aria-required="true">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Website</label>
-
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="fa fa-globe"></i>
-                  </span>
-
-                  <input type="text" formControlName="url" id="url" class="form-control url" value="http://www.accounting-solutions.biz/">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Password</label>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                  <input type="text" formControlName="password" id="password" class="form-control required" value="" maxlength="100" aria-required="true">
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Address</label>
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                  <input type="text" formControlName="address" id="password" class="form-control required" value="" maxlength="100" aria-required="true">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-md-4 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Status</label>
-                <div class="clearfix"></div>
-                <div class="switch onoffswitch-data pull-left">
-                  <div class="onoffswitch">
-                    <input type="checkbox" class="onoffswitch-checkbox" value="T" id="status" name="status" checked="">
-                    <label class="onoffswitch-label" for="status">
-                      <span class="onoffswitch-inner" data-on="Active" data-off="Inactive"></span>
-                      <span class="onoffswitch-switch"></span>
-                    </label>
+          <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="contact-details">
+                <form [formGroup]='myForm' ngxScrollToFirstInvalid>
+                  <div class="row">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <label class="control-label">Company name*</label>
+                          <input type="text" formControlName="companyname" class="form-control required" value="Accounting Solutions">
+                          <div *ngIf="f.companyname.errors">
+          
+                            <small *ngIf="f.companyname.errors.required && (myForm.hasError('whitespace')  || (f.companyname.dirty || f.companyname.touched))"
+                              class="alert-danger">
+                              *Name of at least 5 characters is required</small>
+                              <small *ngIf="myForm.hasError('whitespace')  || (f.companyname.dirty || f.companyname.touched)"
+                              class="alert-danger">
+                              *No whitespace</small>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <label class="control-label">Contact name*</label>
+                          <input type="text" formControlName="contactname" class="form-control">
+                          <div *ngIf="f.contactname.errors">
+          
+                            <small *ngIf="f.contactname.errors.required && (f.contactname.dirty || f.contactname.touched)" class="alert-danger">
+                              *Name of at least 5 characters is required</small>
+                              <small *ngIf="myForm.hasError('whitespace')  || (f.contactname.dirty || f.contactname.touched)"
+                              class="alert-danger">
+                              *No whitespace</small>
+                          </div>
+          
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <label class="control-label">Phone</label>
+                          <!-- <div class="input-group"> -->
+                          <!-- <span class="input-group-addon">
+                                <i class="fa fa-phone"></i>
+                              </span> -->
+                          <input type="text" formControlName="phone" class="form-control">
+          
+                          <!-- </div> -->
+                          <div *ngIf="f.phone.errors">
+                            <small *ngIf="f.phone.errors.required && (f.phone.dirty || f.phone.touched) && !f.phone.value" class="alert-danger">
+                              Phone Number is required</small>
+                            <small *ngIf="f.phone.errors.pattern" class="alert-danger">Phone has invalid pattern</small>
+                          </div>
+                        </div>
+          
+          
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                          <label class="control-label">Email</label>
+          
+                          <!-- <div class="input-group"> -->
+                          <!-- <span class="input-group-addon">
+                                <i class="fa fa-at"></i>
+                              </span> -->
+          
+                          <input type="text" formControlName="email" class="form-control">
+                          <!-- </div> -->
+                          <div *ngIf='f.email.errors'>
+          
+                            <small *ngIf="f.email.errors.required && (f.email.dirty || f.email.touched)" class="alert-danger">
+                              Email is required</small>
+                            <small *ngIf="f.email.errors.pattern" class="alert-danger">Email has invalid pattern</small>
+                            <small *ngIf="myForm.hasError('whitespace')  || (f.email.dirty || f.email.touched)"
+                            class="alert-danger">
+                            *No whitespace</small>
+                          </div>
+          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+          
+                      <div class="form-group">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+          
+                          <label class="control-label">Website</label>
+                          <!-- <div class="input-group">
+                              <span class="input-group-addon">
+                                <i class="fa fa-globe"></i>
+                              </span> -->
+                          <input type="text" formControlName="url" class="form-control url">
+                          <!-- </div> -->
+                          <div *ngIf="f.url.errors">
+          
+                            <small *ngIf="f.url.errors && (f.url.dirty || f.url.touched)" class="alert-danger">
+                              Url is required</small>
+          
+                          </div>
+                        </div>
+          
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+          
+                          <label class="control-label">Password</label>
+                          <!-- <div class="input-group">
+                              <span class="input-group-addon">
+                                <i class="fa fa-lock"></i>
+                              </span> -->
+                          <input type="password" formControlName="password" class="form-control required">
+                          <!-- </div> -->
+                          <div *ngIf="f.password.errors">
+                            <small *ngIf="f.password.errors.required && (f.password.dirty || f.password.touched)" class="alert-danger">
+                              Password is required</small>
+                            <small *ngIf="f.password.errors.pattern" class="alert-danger">Min len. 8, Caps, Small, num, Symbol</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel-body">
+          
+                      <div class="form-group">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+          
+                          <label class="control-label">Address</label>
+                          <!-- <div class="input-group">
+                              <span class="input-group-addon">
+                                <i class="fa fa-lock"></i>
+                              </span> -->
+                          <input type="text" formControlName="address" class="form-control required">
+                          <!-- </div> -->
+                          <div *ngIf="f.address.errors">
+          
+                            <small *ngIf="f.address.errors.required && (f.address.dirty || f.address.touched)" class="alert-danger">
+                              Address is required</small>
+                            </div>
+                            </div>
+                      </div>
+                      <div class="form-group">
+                      <div class="col-lg-8 col-md-8 col-sm-8">
+                          <label class="control-label">Description</label>
+          
+                          <div class="input-group pj-multilang-wrap" data-index="1">
+                            <textarea class="form-control mceEditor required" formControlName="description" cols="30" rows="10" aria-required="true">Lorem ipsum dolor sit amet, consectetur adipiscin</textarea>
+                            <span class="input-group-addon pj-multilang-input">
+                              <img src="../../../assets/img/english.png" alt="English">
+                            </span>
+                          </div>
+                          <div *ngIf="f.description.errors">
+          
+                              <small *ngIf="f.description.errors.required && (f.description.dirty || f.description.touched)" class="alert-danger">
+                                Description is required</small>
+                              </div>
+                              </div>
+                        </div>
+                      </div>
                   </div>
-                </div>
-                <div class="clearfix"></div>
+          
+          
+          
+                  <!--             <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="form-group">
+                          <label class="control-label">Logo</label>
+                          <div class="text-center">
+                            <div class="pj-employer-logo">
+                              <p class="m-b-md">
+                                <img src="../../../assets/img/companylogo.jpg" style="width: 100px; height: 90px;" alt="" class="pj-scale">
+                              </p>
+                              <p class="m-b-md">
+                                <a rev="25" class="btn btn-xs btn-danger btn-outline btn-file pj-delete-logo">
+                                  <i class="fa fa-trash"></i> Delete</a>
+                              </p>
+                            </div>
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                              <span class="btn btn-primary btn-outline btn-file">
+                                <span class="fileinput-new">
+                                  <i class="fa fa-upload m-r-xs"></i> Change image</span>
+                                <input type="file" name="logo">
+                              </span>
+                              <span class="fileinput-filename"></span>
+                              <a data-dismiss="fileinput" style="float: none">×</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> -->
+          
+                  <div class="hr-line-dashed"></div>
+          
+                  <div class="clearfix">
+                    <button type="submit" (click)="onSubmit(user._id)" class="btn btn-primary btn-lg pull-left">Save</button>
+                    <button class="btn btn-white btn-lg pull-right" type="button" onclick="window.location(0,0)">Cancel</button>
+                  </div>
+                </form>
               </div>
             </div>
-          </div>
-
-          <div class="hr-line-dashed"></div>
-
-          <div class="row">
-            <div class="col-lg-6 col-md-8 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Description</label>
-
-                <div class="input-group pj-multilang-wrap" data-index="1">
-                  <textarea class="form-control mceEditor required" formControlName="description" cols="30" rows="10" data-msg-required="This field is required."
-                    aria-required="true"> s odictum, vitae vestibrnare</textarea>
-                  <span class="input-group-addon pj-multilang-input">
-                    <img src="../../../assets/img/english.png" alt="English">
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <!-- <div class="col-lg-3 col-md-4 col-sm-6">
-              <div class="form-group">
-                <label class="control-label">Logo</label>
-                <div class="text-center">
-                  <div class="pj-employer-logo">
-                    <p class="m-b-md">
-                      <img src="../../../assets/img/companylogo.jpg" style="width: 100px; height: 90px;" alt="" class="pj-scale">
-                    </p>
-                    <p class="m-b-md">
-                      <a href="http://vevs.website/ryambudha/index.php?controller=pjJobPortalEmployers&amp;action=pjActionDeleteLogo&amp;id=25"
-                        rev="25" class="btn btn-xs btn-danger btn-outline btn-file pj-delete-logo">
-                        <i class="fa fa-trash"></i> Delete</a>
-                    </p>
-                  </div>
-                  <div class="fileinput fileinput-new" data-provides="fileinput">
-                    <span class="btn btn-primary btn-outline btn-file">
-                      <span class="fileinput-new">
-                        <i class="fa fa-upload m-r-xs"></i> Change image</span>
-                      <input type="file" name="logo">
-                    </span>
-                    <span class="fileinput-filename"></span>
-                    <a href="http://vevs.website/ryambudha/index.php?controller=pjJobPortalEmployers&amp;action=pjActionUpdate&amp;id=25#" class="close fileinput-exists"
-                      data-dismiss="fileinput" style="float: none">×</a>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-          </div>
-
-          <div class="hr-line-dashed"></div>
-
-          <div class="clearfix">
-            <button type="submit" class="btn btn-primary btn-lg pull-left">Save</button>
-            <!-- <button class="btn btn-white btn-lg pull-right" type="button" onclick="window.location.href=&#39;http://vevs.website/ryambudha/index.php?controller=pjJobPortalEmployers&amp;action=pjActionIndex&#39;;">Cancel</button> -->
-          </div>
         </div>
       </form>
     </div>

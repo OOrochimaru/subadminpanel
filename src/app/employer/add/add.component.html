@@ -35,12 +35,15 @@
             <div class="form-group">
               <div class="col-lg-6 col-md-6 col-sm-6">
                 <label class="control-label">Company name*</label>
-                <input type="text" myNoSpaces formControlName="companyname" class="form-control required" value="Accounting Solutions">
+                <input type="text" formControlName="companyname" class="form-control required" value="Accounting Solutions">
                 <div *ngIf="f.companyname.errors">
 
                   <small *ngIf="f.companyname.errors.required && (myForm.hasError('whitespace')  || (f.companyname.dirty || f.companyname.touched))"
                     class="alert-danger">
                     *Name of at least 5 characters is required</small>
+                    <small *ngIf="myForm.hasError('whitespace')  || (f.companyname.dirty || f.companyname.touched)"
+                    class="alert-danger">
+                    *No whitespace</small>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-6">
@@ -50,6 +53,9 @@
 
                   <small *ngIf="f.contactname.errors.required && (f.contactname.dirty || f.contactname.touched)" class="alert-danger">
                     *Name of at least 5 characters is required</small>
+                    <small *ngIf="myForm.hasError('whitespace')  || (f.contactname.dirty || f.contactname.touched)"
+                    class="alert-danger">
+                    *No whitespace</small>
                 </div>
 
               </div>

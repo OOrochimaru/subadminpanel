@@ -38,11 +38,11 @@ export class UpdateComponent implements OnInit {
       companyname : ['', [Validators.required, noWhitespaceValidator]],
       contactname : ['', [Validators.required, noWhitespaceValidator]],
       phone : ['', [Validators.required,Validators.pattern(this.phoneRegex)]],
-      address : ['', [Validators.required]],
-      email : ['', [Validators.required, Validators.pattern(this.emailRegex)]],
+      address : ['', [Validators.required, noWhitespaceValidator]],
+      email : ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
       url : ['', [Validators.required, noWhitespaceValidator] ],
       password : ['', [Validators.required, Validators.pattern(this.passRegex)] ],
-      description : ['', [Validators.required]],
+      description : ['', [Validators.required, noWhitespaceValidator]],
     })
   };
 
@@ -61,20 +61,27 @@ export class UpdateComponent implements OnInit {
           phone : this.user.phone ? this.user.phone : '' ,
           address : this.user.address ? this.user.address : '',
           password : this.user.password ? this.user.password : '',
+          url: this.user.url ? this.user.url : '',
           description : this.user.description ? this.user.description : '',
         });
         this.createdAt = this.user.createdAt; 
-        this.updatedAt = this.user.updatedAt; 
+        this.updatedAt = this.user.lastUpdated; 
       }else{
         this.router.navigate(['/'])
       }
     });
   };
+  public get f() {
+    return this.myForm.controls;
+  }
 
   onSubmit(userid){
+    console.log(this.myForm)
     if (this.myForm.valid) {
       var body = this.myForm.value;
+      console.log(this.myForm.value)
       this.userService.updateUser(`${userid}`+"/update", body).subscribe(data => {
+        console.log(data);
         this.toster.successToast('Employer Updated', 'Employer Updated Successfully');
       })
     }
