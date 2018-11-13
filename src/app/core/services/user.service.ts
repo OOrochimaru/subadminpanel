@@ -17,6 +17,12 @@ export class UserService {
   updateUser(url, body){
     return this.apiService.update(url, body);
   }
+  deactivateUser(url){
+    return this.apiService.get(url);
+  }
+  reactivateUser(url){
+    return this.apiService.get(url);
+  }
 
   deleteUser(url){
     return this.apiService.delete(url);

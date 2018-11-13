@@ -83,7 +83,8 @@
                   <div class="ui-g">
                       <div class="ui-g-3"><p-button pTooltip="edit" (click)="editUser(user._id)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-pencil" styleClass="ui-button-success"  ></p-button></div>
                       <div class="ui-g-3"><p-button pTooltip="view"  (click)="showDialog(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-eye" styleClass="ui-button-info" ></p-button></div>
-                      <div class="ui-g-3"><p-button pTooltip="deactivate" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-times-circle" styleClass="ui-button-warning"></p-button></div>
+                      <div class="ui-g-3" *ngIf="user.status === true "><p-button pTooltip="deactivate" (click)="deactivate(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-times-circle" styleClass="ui-button-warning"></p-button></div>
+                      <div class="ui-g-3" *ngIf="user.status === false" ><p-button pTooltip="Activate" (click)="activate(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-eye" styleClass="ui-button-secondary"></p-button></div>
                       <div class="ui-g-3"><p-button pTooltip="delete" (click)="deleteUser(user)" tooltipPosition='bottom' tooTipEvent='hover' icon="pi pi-minus" styleClass="ui-button-danger"></p-button></div>
                   </div>
                 </td>

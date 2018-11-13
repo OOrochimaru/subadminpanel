@@ -10,4 +10,5 @@ export class User{
     createdAt: String;
     lastUpdated: String;
     _id: String;
+    status: Boolean;
 }

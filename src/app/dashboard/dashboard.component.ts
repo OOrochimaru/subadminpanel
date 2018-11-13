@@ -51,6 +51,45 @@ export class DashboardComponent implements OnInit {
         this.selectedUser = user;
         console.log(this.selectedUser);
   };
+  deactivate(user) {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to Deactivate this user',
+      accept: () => {
+        this.userService.deactivateUser(`${user._id}/deactivate`).subscribe(data =>{
+          if (data.status === 200) {
+            console.log(data);
+            let i = this.user.indexOf(user);
+            console.log(i);
+            this.user[i].status = false;
+            this.toster.successToast('User Deactivated', 'User Deactivated Successfully');
+          }
+          // this.user.splice(this.user.indexOf(user), 1);
+          // console.log(data);
+        })
+          //Actual logic to perform a confirmation
+      }
+  });
+  }
+  activate(user){
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to Reactivate this user',
+      accept: () => {
+        this.userService.reactivateUser(`${user._id}/reactivate`).subscribe(data =>{
+          if (data.status === 200) {
+            console.log(data);
+            let i = this.user.indexOf(user);
+            console.log(i);
+            this.user[i].status = true;
+            this.toster.successToast('User Reactivated', 'User Reactivated Successfully');
+            
+          }
+          // this.user.splice(this.user.indexOf(user), 1);
+          // console.log(data);
+        })
+          //Actual logic to perform a confirmation
+      }
+  });
+  }
 
   deleteUser(user){
     this.confirmationService.confirm({
