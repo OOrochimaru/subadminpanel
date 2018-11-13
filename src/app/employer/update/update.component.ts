@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../core/model/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../core/services/user.service';
+import { ToasterService } from '../../core/services/toaster.service';
 
 @Component({
   selector: 'app-update',
@@ -13,6 +14,7 @@ export class UpdateComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private fb: FormBuilder,
+  private toster: ToasterService,
     private userService: UserService, 
   private router: Router) { }
   user: User;
@@ -66,10 +68,9 @@ export class UpdateComponent implements OnInit {
     if (this.myForm.valid) {
       var body = this.myForm.value;
       this.userService.updateUser(`${userid}`+"/update", body).subscribe(data => {
-        console.log(data);
+        this.toster.successToast('Employer Updated', 'Employer Updated Successfully');
       })
     }
-    console.log(this.myForm.value, this.myForm.valid);
   }
 
 }
