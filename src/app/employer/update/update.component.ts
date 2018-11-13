@@ -66,6 +66,7 @@ export class UpdateComponent implements OnInit {
         });
         this.createdAt = this.user.createdAt; 
         this.updatedAt = this.user.lastUpdated; 
+
       }else{
         this.router.navigate(['/'])
       }
@@ -81,7 +82,7 @@ export class UpdateComponent implements OnInit {
       var body = this.myForm.value;
       console.log(this.myForm.value)
       this.userService.updateUser(`${userid}`+"/update", body).subscribe(data => {
-        console.log(data);
+        this.router.navigateByUrl('/employers');
         this.toster.successToast('Employer Updated', 'Employer Updated Successfully');
       })
     }
