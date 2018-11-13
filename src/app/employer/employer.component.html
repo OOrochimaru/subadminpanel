@@ -82,7 +82,7 @@
           User Lists
         </div>
         <div class="panel-body">
-          <p-table #tt [paginator]="true" [rows]="5" [totalRecords]="employers.length" [globalFilterFields]="['email', 'contact_name']"
+          <p-table #tt [paginator]="true" [rows]="5" [totalRecords]="employers?.length" [globalFilterFields]="['email', 'contact_name']"
             [value]='employers' [columns]='cols'>
             <div class="col-sm-offset-4">
 

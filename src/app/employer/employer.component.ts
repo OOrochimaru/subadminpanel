@@ -14,8 +14,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class EmployerComponent implements OnInit {
   
   myForm: FormGroup;
-  employers: User[];
-  jobsList: any[];
+  employers: User[] = [];
+  jobsList: any[] = [];
   cols: any[];
   totalJobs: Number;
   paginationData : any = {};
@@ -27,7 +27,9 @@ export class EmployerComponent implements OnInit {
   ngOnInit() {
    this.createForm();
     this.userService.getUsers('getemployers').subscribe(data => {
+      console.log(data.data);
       for(var key in data.data){
+        console.log("keyed", data.data[key]);
         this.employers.push(data.data[key]);
       }
       console.log(this.employers);
