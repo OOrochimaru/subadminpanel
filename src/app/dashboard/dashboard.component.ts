@@ -14,7 +14,7 @@ import { ToasterService } from '../core/services/toaster.service';
 })
 export class DashboardComponent implements OnInit {
 
-  user: User[];
+  user: User[] = [];
   display: boolean = false;
   cols: any[];
   selectedUser: User;

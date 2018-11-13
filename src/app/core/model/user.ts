@@ -7,4 +7,7 @@ export class User{
     url : Number;
     description : String;
     password : String;
+    createdAt: String;
+    updatedAt: String;
+    _id: String;
 }
