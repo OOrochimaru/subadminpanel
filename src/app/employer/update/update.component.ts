@@ -37,12 +37,12 @@ export class UpdateComponent implements OnInit {
     this.myForm = this.fb.group({
       companyname : ['', [Validators.required, noWhitespaceValidator]],
       contactname : ['', [Validators.required, noWhitespaceValidator]],
-      phone : ['', [Validators.required,Validators.pattern(this.phoneRegex), noWhitespaceValidator]],
-      address : ['', [Validators.required, noWhitespaceValidator]],
-      email : ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
+      phone : ['', [Validators.required,Validators.pattern(this.phoneRegex)]],
+      address : ['', [Validators.required]],
+      email : ['', [Validators.required, Validators.pattern(this.emailRegex)]],
       url : ['', [Validators.required, noWhitespaceValidator] ],
-      password : ['', [Validators.required, Validators.pattern(this.passRegex), noWhitespaceValidator] ],
-      description : ['', [Validators.required, noWhitespaceValidator]],
+      password : ['', [Validators.required, Validators.pattern(this.passRegex)] ],
+      description : ['', [Validators.required]],
     })
   };
 
@@ -52,6 +52,7 @@ export class UpdateComponent implements OnInit {
     this.route.data.subscribe((data)=>{
       data = data.userData; //resolver parameter is named as userData 
       if (data.status === 201) {
+        console.log(data.userData);
         this.user = data.user;
         this.myForm.patchValue({
           companyname : this.user.company_name ? this.user.company_name : '',
