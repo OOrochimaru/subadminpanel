@@ -4,6 +4,7 @@ import { User } from '../../core/model/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../core/services/user.service';
 import { ToasterService } from '../../core/services/toaster.service';
+import { noWhitespaceValidator } from '../../core/services/no-whitespace.validator';
 
 @Component({
   selector: 'app-update',
@@ -21,6 +22,11 @@ export class UpdateComponent implements OnInit {
   createdAt: any;
   updatedAt: any;
   myForm: FormGroup;
+
+  phoneRegex =/^[0-9]{10}$/;
+  emailRegex = /\S+@\S+\.\S+/;
+  passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
   ngOnInit() {
     this.createForm();
     this.getUserDetail();
@@ -29,14 +35,14 @@ export class UpdateComponent implements OnInit {
   //create a reactive forms
   createForm(){
     this.myForm = this.fb.group({
-      companyname : [''],
-      contactname : [''],
-      phone : [''],
-      address : [''],
-      email : [''],
-      url : ['' ],
-      password : ['' ],
-      description : [''],
+      companyname : ['', [Validators.required, noWhitespaceValidator]],
+      contactname : ['', [Validators.required, noWhitespaceValidator]],
+      phone : ['', [Validators.required,Validators.pattern(this.phoneRegex), noWhitespaceValidator]],
+      address : ['', [Validators.required, noWhitespaceValidator]],
+      email : ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
+      url : ['', [Validators.required, noWhitespaceValidator] ],
+      password : ['', [Validators.required, Validators.pattern(this.passRegex), noWhitespaceValidator] ],
+      description : ['', [Validators.required, noWhitespaceValidator]],
     })
   };
 
