@@ -35,8 +35,8 @@ export class UpdateComponent implements OnInit {
   //create a reactive forms
   createForm(){
     this.myForm = this.fb.group({
-      companyname : ['', [Validators.required, noWhitespaceValidator]],
-      contactname : ['', [Validators.required, noWhitespaceValidator]],
+      companyname : ['', [Validators.required, noWhitespaceValidator, Validators.minLength(5)]],
+      contactname : ['', [Validators.required, noWhitespaceValidator, Validators.minLength(5)]],
       phone : ['', [Validators.required,Validators.pattern(this.phoneRegex)]],
       address : ['', [Validators.required, noWhitespaceValidator]],
       email : ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
