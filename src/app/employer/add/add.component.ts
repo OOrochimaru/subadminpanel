@@ -21,7 +21,7 @@ export class AddComponent implements OnInit {
   private router: Router) { }
 
   phoneRegex =/^[0-9]{10}$/;
-  emailRegex = /\S+@\S+\.\S+/;
+  emailRegex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
   passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
 
@@ -36,10 +36,10 @@ export class AddComponent implements OnInit {
       contactname: ['', [Validators.required, noWhitespaceValidator]],
       phone: ['', [Validators.required, Validators.pattern(this.phoneRegex), noWhitespaceValidator]],
       email: ['', [Validators.required, Validators.pattern(this.emailRegex), noWhitespaceValidator]],
-      url: ['', Validators.required, noWhitespaceValidator],
+      url: ['', [Validators.required, noWhitespaceValidator]],
       password: ['', [Validators.required, Validators.pattern(this.passRegex), noWhitespaceValidator]],
-      address: ['', Validators.required, noWhitespaceValidator],
-      description: ['', Validators.required, noWhitespaceValidator],
+      address: ['', [Validators.required, noWhitespaceValidator]],
+      description: ['', [Validators.required, noWhitespaceValidator]],
     })
   }
   public get f() {
